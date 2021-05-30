@@ -49,6 +49,5 @@ public class StreamSort {
 		for (Person people : ps4) {
 			System.out.println(people.getAge());
 		}
-
 	}
 }
