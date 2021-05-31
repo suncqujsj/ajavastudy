@@ -10,7 +10,7 @@ import bean.Person;
 import utils.DateTimeUtil;
 
 /**
- * list×ª»»Îªmap var-object var-var£¬°üÀ¨ÖØ¸´¼ü£¬ÖµµÄ´¦Àí
+ * listè½¬æ¢ä¸ºmap var-object var-varï¼Œå€¼å¯¹å¯¹è±¡ï¼Œå€¼å¯¹å€¼mapï¼ŒåŒ…æ‹¬é‡å¤é”®ï¼Œå€¼çš„å¤„ç†
  * 
  * @author bob
  *
@@ -27,7 +27,7 @@ public class ListToMapStream {
 			ps.add(p);
 		}
 
-		System.out.println("--------------------1.ÊôĞÔÎªkey£¬¶ÔÏóÎªvalue----------------------------------");
+		System.out.println("--------------------1.å±æ€§ä¸ºkeyï¼Œå¯¹è±¡ä¸ºvalue----------------------------------");
 		Map<String, Person> maps = ps.stream().collect(Collectors.toMap(Person::getId, a -> a, (k1, k2) -> k1));
 		maps.forEach((key, value) -> {
 			System.out.println("key: " + key + "    value: " + value);
@@ -35,7 +35,7 @@ public class ListToMapStream {
 
 		System.out.println();
 		System.out.println();
-		System.out.println("--------------------2.ÊôĞÔÎªkey£¬ÊôĞÔÎªvalue----------------------------------");
+		System.out.println("--------------------2.å±æ€§ä¸ºkeyï¼Œå±æ€§ä¸ºvalue----------------------------------");
 		Map<String, String> map = ps.stream().collect(Collectors.toMap(Person::getId, Person::getName));
 		map.forEach((key, value) -> {
 			System.out.println("key: " + key + "    value: " + value);
@@ -43,35 +43,35 @@ public class ListToMapStream {
 		
 		System.out.println();
 		System.out.println();
-		// ÉùÃ÷Ò»¸öList¼¯ºÏ
+		// å£°æ˜ä¸€ä¸ªListé›†åˆ
 		List<Person> list = new ArrayList();
-		list.add(new Person("1001", "Ğ¡A"));
-		list.add(new Person("1001", "Ğ¡B"));
-		list.add(new Person("1001", "Ğ¡D"));
-		list.add(new Person("1003", "Ğ¡C"));
+		list.add(new Person("1001", "å°A"));
+		list.add(new Person("1001", "å°B"));
+		list.add(new Person("1001", "å°D"));
+		list.add(new Person("1003", "å°C"));
 		System.out.println(list);
 
 		System.out.println();
 		System.out.println();
-		// ½â¾ö·½·¨£º(·ÖÈıÖÖ£¬¾ßÌåÄÄÖÖ¿´ÒµÎñĞèÇó)
-		// 1.ÖØ¸´Ê±ÓÃºóÃæµÄvalue ¸²¸ÇÇ°ÃæµÄvalue
-		System.out.println("--------------------1.ÖØ¸´Ê±ÓÃºóÃæµÄvalue ¸²¸ÇÇ°ÃæµÄvalue----------------------------------");
+		// è§£å†³æ–¹æ³•ï¼š(åˆ†ä¸‰ç§ï¼Œå…·ä½“å“ªç§çœ‹ä¸šåŠ¡éœ€æ±‚)
+		// 1.é‡å¤æ—¶ç”¨åé¢çš„value è¦†ç›–å‰é¢çš„value
+		System.out.println("--------------------1.é‡å¤æ—¶ç”¨åé¢çš„value è¦†ç›–å‰é¢çš„value----------------------------------");
 		Map<String, String> lmap1 = list.stream()
 				.collect(Collectors.toMap(Person::getId, Person::getName, (key1, key2) -> key2));
 		System.out.println(lmap1);
 
 		System.out.println();
 		System.out.println();
-		// 2.ÖØ¸´Ê±½«Ç°ÃæµÄvalue ºÍºóÃæµÄvalueÆ´½ÓÆğÀ´£»
-		System.out.println("--------------------2.ÖØ¸´Ê±½«Ç°ÃæµÄvalue ºÍºóÃæµÄvalueÆ´½ÓÆğÀ´----------------------------------");
+		// 2.é‡å¤æ—¶å°†å‰é¢çš„value å’Œåé¢çš„valueæ‹¼æ¥èµ·æ¥ï¼›
+		System.out.println("--------------------2.é‡å¤æ—¶å°†å‰é¢çš„value å’Œåé¢çš„valueæ‹¼æ¥èµ·æ¥----------------------------------");
 		Map<String, String> map22 = list.stream()
 				.collect(Collectors.toMap(Person::getId, Person::getName, (key1, key2) -> key1 + "," + key2));
 		System.out.println(map22);
 
 		System.out.println();
 		System.out.println();
-		// 3.ÖØ¸´Ê±½«ÖØ¸´keyµÄÊı¾İ×é³É¼¯ºÏ
-		System.out.println("------------------------------3.ÖØ¸´Ê±½«ÖØ¸´keyµÄÊı¾İ×é³É¼¯ºÏ--------------------------------------------");
+		// 3.é‡å¤æ—¶å°†é‡å¤keyçš„æ•°æ®ç»„æˆé›†åˆ
+		System.out.println("------------------------------3.é‡å¤æ—¶å°†é‡å¤keyçš„æ•°æ®ç»„æˆé›†åˆ--------------------------------------------");
 		Map<String, List<String>> map33 = list.stream().collect(Collectors.toMap(Person::getId, p -> {
 			List<String> getNameList = new ArrayList<>();
 			getNameList.add(p.getName());
